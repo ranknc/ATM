@@ -1,3 +1,6 @@
+require_relative "main.rb"
+require_relative 'users'
+
 class Balances
 
 	attr_accessor :balance, :deposit, :withdrawl
@@ -7,25 +10,19 @@ class Balances
 		@deposit = deposit
 		@withdrawl = withdrawl
 	end
-	
-	def balance(amount)
-		if withdrawl(amount)
-			puts "How much would you like to Withdrawl"
-		else deposit(amount)
-			puts "How much would you like to deposit"
+
+	def withdrawl(amount)
+		if @balance >= amount.to_f
+			@blance -= amount.to_f
+			puts "$%.2f amount successfuly withdrawn"
+		else
+			puts "Error: Insufficient funds"
 		end
 	end
+	
+	def deposit(amount)
+		@balance += amount.to_f
+	end
 
-	private
-		def withdrawl(amount)
-			if @balance >= amount.to_f
-				@blance -= amount.to_f
-				puts "$%.2f amount successfuly withdrawn"
-			else
-				puts "Error: Insufficient funds"
-			end
-		end
-		def deposit(amount)
-			@balance += amount.to_f
-		end
+
 end

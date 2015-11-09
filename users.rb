@@ -15,4 +15,11 @@ class Users
 			@login == 1
 		end
 	end
+
+	def login
+		@pin == gets.to_i
+		John.pin(@pin)
+		login = 1
+	end
+
 end
